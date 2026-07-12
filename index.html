@@ -1,85 +1,126 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alejandro & María Luisa | 3 de octubre de 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Alejandro & María Luisa | 3 de octubre de 2026</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#faf8f4;
+color:#444;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px;
+background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35));
+color:white;
+}
+
+.hero h1{
+font-family:'Cormorant Garamond',serif;
+font-size:72px;
+margin-bottom:15px;
+}
+
+.hero h2{
+font-size:22px;
+font-weight:300;
+letter-spacing:4px;
+margin-bottom:30px;
+}
+
+.boton{
+display:inline-block;
+padding:18px 38px;
+border:2px solid white;
+color:white;
+text-decoration:none;
+font-size:15px;
+letter-spacing:2px;
+transition:.3s;
+}
+
+.boton:hover{
+background:white;
+color:black;
+}
+
+section{
+max-width:900px;
+margin:auto;
+padding:90px 30px;
+}
+
+.titulo{
+font-family:'Cormorant Garamond',serif;
+font-size:48px;
+text-align:center;
+margin-bottom:40px;
+}
+
+.texto{
+font-size:18px;
+line-height:1.8;
+text-align:center;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<header class="hero">
+<div class="hero">
 
-    <div class="overlay"></div>
+<div>
 
-    <div class="hero-content">
+<h2>NOS CASAMOS</h2>
 
-        <h3>Nos casamos</h3>
+<h1>Alejandro & María Luisa</h1>
 
-        <h1>Alejandro <span>&</span> María Luisa</h1>
-
-        <p>3 de octubre de 2026</p>
-
-        <a href="#bienvenida" class="boton">
-            Abrir invitación
-        </a>
-
-    </div>
-
-</header>
-
-<section id="bienvenida">
-
-    <h2>Queremos celebrarlo contigo</h2>
-
-    <p>
-
-        Después de muchos momentos compartidos, ha llegado el día de decir
-        "Sí, quiero".
-
-        Nos haría muchísima ilusión que nos acompañaras en uno de los días
-        más importantes de nuestra vida.
-
-    </p>
-
-</section>
-
-<section id="contador">
-
-<h2>Cuenta atrás</h2>
-
-<div id="countdown">
-
-<div><span id="dias">0</span><small>Días</small></div>
-
-<div><span id="horas">0</span><small>Horas</small></div>
-
-<div><span id="minutos">0</span><small>Minutos</small></div>
-
-<div><span id="segundos">0</span><small>Segundos</small></div>
+<a href="#boda" class="boton">Abrir invitación</a>
 
 </div>
 
+</div>
+
+<section id="boda">
+
+<h2 class="titulo">
+Queremos celebrarlo contigo
+</h2>
+
+<p class="texto">
+
+Después de muchos momentos compartidos, ha llegado el día de decir
+<strong>"Sí, quiero"</strong>.
+
+Nos haría muchísima ilusión que nos acompañaras en uno de los días más importantes de nuestra vida.
+
+</p>
+
 </section>
 
-<section id="evento">
-
-<h2>La boda</h2>
-
-<p><strong>📅 Fecha:</strong> 3 de octubre de 2026</p>
-
-<p><strong>🕐 Hora:</strong> 13:00</p>
-
-<p><strong>📍 Lugar:</strong> Cortijo El Maizal</p>
-
-</section>
-<script src="script.js"></script>
 </body>
+
 </html>
+
