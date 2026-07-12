@@ -70,6 +70,16 @@
 /* Versión definitiva sin música */
 #openInvitation{display:inline-flex;margin:0 auto}
 .music-primary,.music-secondary,.music-note,#musicPlayerWrap{display:none!important}
+
+.google-form-card{
+  background:var(--paper);
+  padding:clamp(1.6rem,4vw,2.5rem);
+  text-align:center;
+  border:1px solid rgba(89,100,71,.18);
+}
+.google-form-card .button{
+  margin:1rem auto;
+}
 </style>
 </head>
 <body>
@@ -87,7 +97,6 @@
 <div class="couple-summary__content reveal">
 <p class="eyebrow light">Nosotros</p>
 <h2>Dos personas, un mismo camino</h2>
-
 <p>
       Ahora queremos comenzar una nueva etapa rodeados de las personas que forman parte
       de nuestra historia. Gracias por acompañarnos en el día en que elegimos seguir
@@ -96,21 +105,8 @@
 </div>
 </section>
 <section class="rsvp section section--sand" id="confirmar"><div class="rsvp__intro"><p class="eyebrow">Confirma tu asistencia</p><h2>¿Nos acompañas?</h2><p>Por favor, confirma antes del <strong>1 de septiembre de 2026</strong>.</p></div>
-<form class="form" id="rsvpForm">
-<label>Nombre y apellidos<input id="name" placeholder="Escribe tu nombre" required="" type="text"/></label>
-<fieldset><legend>¿Asistirás?</legend><label class="radio"><input name="attendance" required="" type="radio" value="Sí, asistiré"/> Sí, allí estaré</label><label class="radio"><input name="attendance" required="" type="radio" value="No podré asistir"/> No podré asistir</label></fieldset>
-<label>Número de asistentes<input id="guests" max="12" min="1" type="number" value="1"/></label>
-<fieldset>
-<legend>¿Necesitas autobús de vuelta?</legend>
-<label class="radio"><input name="bus" required="" type="radio" value="Sí, necesito autobús de vuelta"/> Sí</label>
-<label class="radio"><input name="bus" required="" type="radio" value="No necesito autobús de vuelta"/> No</label>
-<label class="radio"><input name="bus" required="" type="radio" value="Aún no lo sé"/> Aún no lo sé</label>
-</fieldset><label>Alergias o intolerancias<textarea id="allergies" placeholder="Opcional" rows="3"></textarea></label>
-<label>¿Qué canción no puede faltar?<input id="song" placeholder="Canción y artista" type="text"/></label>
-<label>Mensaje para los novios<textarea id="message" placeholder="Opcional" rows="3"></textarea></label>
-<p class="form__hint">Al enviar, podrás elegir confirmar por WhatsApp con María Luisa o con Alejandro.</p><button class="button" type="submit">Preparar confirmación</button>
-</form>
-<div class="whatsapp-choice" hidden="" id="whatsappChoice"><p>Elige a quién enviar la confirmación:</p><div class="whatsapp-choice__buttons"><a class="button" id="sendMalu" target="_blank">María Luisa</a><a class="button button--outline" id="sendAlex" target="_blank">Alejandro</a></div></div></section>
+
+<div class="google-form-card"><p>Pulsa el botón para completar la confirmación de asistencia. Tus respuestas quedarán guardadas automáticamente.</p><a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSddTAPVpdydQx05nedP3iuCdyubapuqnyww8bcAgDzNA88Zyw/viewform?usp=header" id="googleFormButton" rel="noopener" target="_blank">Abrir formulario de asistencia</a><p class="form__hint">Fecha límite de confirmación: 1 de septiembre de 2026.</p></div></section>
 <section class="contact section"><p class="eyebrow">También por WhatsApp</p><h2>Estamos aquí</h2><div class="contact__grid"><a class="contact__card" href="https://wa.me/34649259143" target="_blank"><span>María Luisa</span><small>649 259 143</small></a><a class="contact__card" href="https://wa.me/34608760555" target="_blank"><span>Alejandro</span><small>608 760 555</small></a></div></section>
 <section class="closing"><div class="shade"></div><div class="closing__content reveal"><p class="eyebrow light">Gracias por acompañarnos</p><h2>Lo mejor de nuestra aventura aún está por comenzar</h2><p>María Luisa &amp; Alejandro · 3 de octubre de 2026</p></div></section>
 </main>
@@ -120,15 +116,6 @@ const weddingDate=new Date('2026-10-03T13:00:00+02:00').getTime();
 function updateCountdown(){const now=Date.now(),d=weddingDate-now;if(d<=0)return;const day=86400000,hour=3600000,minute=60000;days.textContent=String(Math.floor(d/day)).padStart(2,'0');hours.textContent=String(Math.floor((d%day)/hour)).padStart(2,'0');minutes.textContent=String(Math.floor((d%hour)/minute)).padStart(2,'0');seconds.textContent=String(Math.floor((d%minute)/1000)).padStart(2,'0')} updateCountdown();setInterval(updateCountdown,1000);
 const welcome=document.getElementById('welcome');document.body.style.overflow='hidden';openInvitation.onclick=()=>{welcome.classList.add('is-hidden');document.body.style.overflow='';setTimeout(()=>welcome.remove(),900)};
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-visible')}),{threshold:.15});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-rsvpForm.addEventListener('submit',e=>{e.preventDefault();const formData=new FormData(rsvpForm);const attendance=formData.get('attendance');const bus=formData.get('bus');const text=`Confirmación de boda — María Luisa y Alejandro
-
-Nombre: ${name.value.trim()}
-Asistencia: ${attendance}
-Número de asistentes: ${guests.value}
-Autobús de vuelta: ${bus}
-Alergias/intolerancias: ${allergies.value.trim()||'Ninguna'}
-Canción propuesta: ${song.value.trim()||'Sin propuesta'}
-Mensaje: ${message.value.trim()||'Sin mensaje'}`;const encoded=encodeURIComponent(text);sendMalu.href=`https://wa.me/34649259143?text=${encoded}`;sendAlex.href=`https://wa.me/34608760555?text=${encoded}`;whatsappChoice.hidden=false;whatsappChoice.scrollIntoView({behavior:'smooth',block:'center'})});
 document.querySelectorAll('.gallery__item').forEach(b=>b.onclick=()=>{const i=b.querySelector('img');lightboxImage.src=i.src;lightboxImage.alt=i.alt;lightbox.showModal()});closeLightbox.onclick=()=>lightbox.close();lightbox.onclick=e=>{if(e.target===lightbox)lightbox.close()};
 </script>
 </body>
